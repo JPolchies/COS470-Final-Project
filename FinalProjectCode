@@ -1,0 +1,16 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import polars as pl
+import torch
+
+train_series = pd.read_parquet('train_series.parquet', engine='pyarrow')
+test_series = pd.read_parquet('train_series.parquet', engine='pyarrow')
+train_event = pd.read_csv('train_events.csv')
+
+train_event_na=train_event[train_event.isna().any(axis=1)]
+train_event_na
+
+train_event_no_nan = train_event.dropna()
+train_event_no_nan
